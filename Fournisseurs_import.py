@@ -10,7 +10,7 @@ import xmlrpclib
 srv, db = 'http://localhost:8090', 'socolait_v2.1.1_xml'
 user, pwd = 'odoo10', 'odoo10'
 
-ui_username,ui_pwd = 'admin', '123admin456'
+ui_username, ui_pwd = 'admin', '123admin456'
 
 #-------------------------------
 # Printing server information
@@ -30,16 +30,16 @@ if uid:
 
     # create
     res_id = api.execute_kw(db, uid, ui_pwd, 'res.partner', 'create', [{
-                            'name':'FRS10',
+                            'name': 'FRS10',
                             'supplier': True,
                             'customer': False,
-                            'state':'validated',
-                            'active' : True
+                            'state': 'validated',
+                            'active': True
     }])
 
     if res_id:
         ref = api.execute_kw(db, uid, ui_pwd, 'ir.model.data', 'create', [{
-                            'module':'socolait_fournisseurs',
+                            'module': 'socolait_fournisseurs',
                             'name': 'frs00010',
                             'noupdate': True,
                             'model': 'res.partner',
@@ -48,6 +48,7 @@ if uid:
     id = api.execute_kw(db, uid, ui_pwd, 'ir.model.data', 'get_object_reference', ['socolait_fournisseurs', 'frs00010'],{})
 
     print id[1]
+
 
 
 else:
